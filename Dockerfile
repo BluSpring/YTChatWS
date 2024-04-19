@@ -7,4 +7,6 @@ RUN npm install
 #RUN apk add  --no-cache ffmpeg
 
 COPY . .
+
+EXPOSE 23776
 CMD ["node", "."]
