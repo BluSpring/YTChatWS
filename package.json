@@ -1,0 +1,13 @@
+{
+  "name": "yt-chat-ws",
+  "version": "1.0.0",
+  "description": "A Node.js server for holding WS connections to YT's stream chats with InnerTube, because screw having to do polling.",
+  "main": "index.js",
+  "repository": "https://github.com/BluSpring/YTChatWS",
+  "author": "BluSpring",
+  "license": "Unlicense",
+  "dependencies": {
+    "ws": "^8.16.0",
+    "youtubei.js": "^9.3.0"
+  }
+}
