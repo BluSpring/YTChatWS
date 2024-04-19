@@ -1,0 +1,9 @@
+services:
+  app:
+    image: node:20-alpine
+    command: sh -c "yarn install && yarn run dev"
+    ports:
+      - 0.0.0.0:23776
+    working_dir: /app
+    volumes:
+      - ./:/app
