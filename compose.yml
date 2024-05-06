@@ -1,9 +1,27 @@
 services:
   app:
-    image: node:20-alpine
-    command: sh -c "npm install && node ."
-    ports:
-      - 0.0.0.0:23776
-    working_dir: /app
-    volumes:
-      - ./:/app
+    # image: node:20-alpine
+    # command: sh -c "npm install && node ."
+    # ports:
+      # - 0.0.0.0:23776
+    # working_dir: /app
+    # volumes:
+      # - ./:/app
+    build: .
+    networks:
+      - traefik
+    labels:
+      traefik.enable: true
+
+      traefik.http.routers.ytchatnaz.entrypoints: https
+      traefik.http.routers.ytchatnaz.rule: Host(`grievance-slimness-swerve.devos.gay`)
+      traefik.http.routers.ytchatnaz.tls: true
+      traefik.http.routers.ytchatnaz.tls.certresolver: letsencrypt
+
+      traefik.http.routers.ytchatnaz.service: ytchatnaz-svc
+
+      traefik.http.services.ytchatnaz-svc.loadbalancer.server.port: 23776
+
+networks:
+  traefik:
+    external: true
