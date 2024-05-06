@@ -77,6 +77,29 @@ wss.on('connection', async (ws, req) => {
                     break;
                 }
 
+                case 'get_streams': {
+                    const channel = await yt.getChannel(data.d.id);
+                    await channel.getLiveStreams();
+                    const streams = channel.videos.filter(a => a.is_live && !a.is_premiere);
+
+                    send('streams_list', {
+                        id: data.d.id,
+                        streams: streams.map(a => a.id)
+                    });
+
+                    break;
+                }
+
+                case 'disconnect': {
+                    if (!connectedChats.has(data.d.id))
+                        return;
+
+                    connectedChats.get(data.d.id).stop();
+                    connectedChats.delete(data.d.id);
+
+                    break;
+                }
+
                 case 'connect': {
                     try {
                         if (connectedChats.has(data.d.id))

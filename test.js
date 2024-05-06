@@ -20,12 +20,17 @@ ws.on('open', () => {
 ws.on('message', (d) => {
     const data = JSON.parse(d.toString());
 
+    console.log(data);
+    
     switch (data.op) {
         case 'login_ack': {
-            send('connect', {
+            /*send('connect', {
                 id: 'jfKfPfyJRdk'
+            });*/
+            send('get_streams', {
+                id: 'UCSJ4gkVC6NrvII8umztf0Ow'
             });
             break;
         }
     }
-});
+}); 
