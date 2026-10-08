@@ -14,7 +14,7 @@ services:
       traefik.enable: true
 
       traefik.http.routers.ytchatnaz.entrypoints: https
-      traefik.http.routers.ytchatnaz.rule: Host(`grievance-slimness-swerve.devos.gay`)
+      traefik.http.routers.ytchatnaz.rule: Host(`youtube-chat.bluspring.xyz`)
       traefik.http.routers.ytchatnaz.tls: true
       traefik.http.routers.ytchatnaz.tls.certresolver: letsencrypt
 
